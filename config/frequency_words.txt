@@ -46,7 +46,7 @@ DJI
 刘强东
 
 字节
-bytedance
+Bytedance
 张一鸣
 
 特斯拉
@@ -62,24 +62,24 @@ NVIDIA
 AMD
 
 谷歌
-google
-gemini
-deepmind
+Google
+Gemini
+Deepmind
 
-chatgpt
-openai
-sora
+ChatGPT
+OpenAI
+Sora
 
-claude
+Claude
 Anthropic
 
-iphone
-ipad
-mac
-ios
+iPhone
+iPad
+Mac
+iOS
 
-ai
-!gai
+AI
+!GAI
 人工智能
 
 自动驾驶
@@ -111,3 +111,8 @@ ai
 宇宙
 飞船
 航空
+
+小米
+Xiaomi
+HyperOS
+小米汽车
