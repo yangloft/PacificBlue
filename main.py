@@ -2215,9 +2215,9 @@ def render_html_content(
             }
             
             .new-section {
-                margin-top: 40px;
+                /* margin-top: 40px; */
                 padding-top: 24px;
-                border-top: 2px solid #f0f0f0;
+                /* border-top: 2px solid #f0f0f0; */
             }
             
             .new-section-title {
