@@ -3289,7 +3289,7 @@ def split_content_into_batches(
     if format_type in ("wework", "bark"):
         base_header = f"**总新闻数：** {total_titles}\n\n\n\n"
     elif format_type == "telegram":
-        base_header = f"总新闻数： {total_titles}\n\n"
+        base_header = f"总新闻数： {total_titles}\n"
     elif format_type == "ntfy":
         base_header = f"**总新闻数：** {total_titles}\n\n"
     elif format_type == "feishu":
@@ -3308,7 +3308,7 @@ def split_content_into_batches(
         if update_info:
             base_footer += f"\n> TrendRadar 发现新版本 **{update_info['remote_version']}**，当前 **{update_info['current_version']}**"
     elif format_type == "telegram":
-        base_footer = f"\n\n更新时间：{now.strftime('%Y-%m-%d %H:%M:%S')}"
+        base_footer = f"\n更新时间：{now.strftime('%Y-%m-%d %H:%M:%S')}"
         if update_info:
             base_footer += f"\nTrendRadar 发现新版本 {update_info['remote_version']}，当前 {update_info['current_version']}"
     elif format_type == "ntfy":
@@ -3333,7 +3333,7 @@ def split_content_into_batches(
         if format_type in ("wework", "bark"):
             stats_header = f"📊 **热点词汇统计**\n\n"
         elif format_type == "telegram":
-            stats_header = f"📊 热点词汇统计\n\n"
+            stats_header = f"📊 热点词汇统计\n"
         elif format_type == "ntfy":
             stats_header = f"📊 **热点词汇统计**\n\n"
         elif format_type == "feishu":
@@ -3405,11 +3405,11 @@ def split_content_into_batches(
                     word_header = f"📌 {sequence_display} **{word}** : {count} 条\n\n"
             elif format_type == "telegram":
                 if count >= 10:
-                    word_header = f"🔥 {sequence_display} {word} : {count} 条\n\n"
+                    word_header = f"🔥 {sequence_display} {word} : {count} 条\n"
                 elif count >= 5:
-                    word_header = f"📈 {sequence_display} {word} : {count} 条\n\n"
+                    word_header = f"📈 {sequence_display} {word} : {count} 条\n"
                 else:
-                    word_header = f"📌 {sequence_display} {word} : {count} 条\n\n"
+                    word_header = f"📌 {sequence_display} {word} : {count} 条\n"
             elif format_type == "ntfy":
                 if count >= 10:
                     word_header = (
@@ -3482,7 +3482,7 @@ def split_content_into_batches(
                 else:
                     formatted_title = f"{first_title_data['title']}"
 
-                first_news_line = f"  1. {formatted_title}\n"
+                first_news_line = f"  1. {formatted_title}"
                 if len(stat["titles"]) > 1:
                     first_news_line += "\n"
 
@@ -3535,7 +3535,7 @@ def split_content_into_batches(
                 else:
                     formatted_title = f"{title_data['title']}"
 
-                news_line = f"  {j + 1}. {formatted_title}\n"
+                news_line = f"  {j + 1}. {formatted_title}"
                 if j < len(stat["titles"]) - 1:
                     news_line += "\n"
 
@@ -3558,7 +3558,7 @@ def split_content_into_batches(
                 if format_type in ("wework", "bark"):
                     separator = f"\n\n\n\n"
                 elif format_type == "telegram":
-                    separator = f"\n\n"
+                    separator = f"\n"
                 elif format_type == "ntfy":
                     separator = f"\n\n"
                 elif format_type == "feishu":
@@ -3588,7 +3588,7 @@ def split_content_into_batches(
             new_header = f"\n\n\n\n🆕 **本次新增热点新闻** (共 {report_data['total_new_count']} 条)\n\n"
         elif format_type == "telegram":
             new_header = (
-                f"\n\n🆕 本次新增热点新闻 (共 {report_data['total_new_count']} 条)\n\n"
+                f"\n🆕 本次新增热点新闻 (共 {report_data['total_new_count']} 条)\n"
             )
         elif format_type == "ntfy":
             new_header = f"\n\n🆕 **本次新增热点新闻** (共 {report_data['total_new_count']} 条)\n\n"
@@ -3618,7 +3618,7 @@ def split_content_into_batches(
             if format_type in ("wework", "bark"):
                 source_header = f"**{source_data['source_name']}** ({len(source_data['titles'])} 条):\n\n"
             elif format_type == "telegram":
-                source_header = f"{source_data['source_name']} ({len(source_data['titles'])} 条):\n\n"
+                source_header = f"{source_data['source_name']} ({len(source_data['titles'])} 条):\n"
             elif format_type == "ntfy":
                 source_header = f"**{source_data['source_name']}** ({len(source_data['titles'])} 条):\n\n"
             elif format_type == "feishu":
@@ -3658,7 +3658,7 @@ def split_content_into_batches(
                 else:
                     formatted_title = f"{title_data_copy['title']}"
 
-                first_news_line = f"  1. {formatted_title}\n"
+                first_news_line = f"  1. {formatted_title}"
 
             # 原子性检查：来源标题+第一条新闻
             source_with_first_news = source_header + first_news_line
@@ -3707,7 +3707,7 @@ def split_content_into_batches(
                 else:
                     formatted_title = f"{title_data_copy['title']}"
 
-                news_line = f"  {j + 1}. {formatted_title}\n"
+                news_line = f"  {j + 1}. {formatted_title}"
 
                 test_content = current_batch + news_line
                 if (
@@ -3749,7 +3749,7 @@ def split_content_into_batches(
         if format_type == "wework":
             failed_header = f"\n\n\n\n⚠️ **数据获取失败的平台：**\n\n"
         elif format_type == "telegram":
-            failed_header = f"\n\n⚠️ 数据获取失败的平台：\n\n"
+            failed_header = f"\n⚠️ 数据获取失败的平台：\n"
         elif format_type == "ntfy":
             failed_header = f"\n\n⚠️ **数据获取失败的平台：**\n\n"
         elif format_type == "feishu":
