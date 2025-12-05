@@ -1962,7 +1962,7 @@ def render_html_content(
             body { 
                 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
                 margin: 0; 
-                padding: 16px; 
+                padding: 0px; 
                 background: #fafafa;
                 color: #333;
                 line-height: 1.5;
@@ -1972,7 +1972,7 @@ def render_html_content(
                 max-width: 600px;
                 margin: 0 auto;
                 background: white;
-                border-radius: 12px;
+                /* border-radius: 12px; */
                 overflow: hidden;
                 box-shadow: 0 2px 16px rgba(0,0,0,0.06);
             }
@@ -2053,11 +2053,11 @@ def render_html_content(
             }
             
             .content {
-                padding: 24px;
+                padding: 8px;
             }
             
             .word-group {
-                margin-bottom: 40px;
+                margin-bottom: 8px;
             }
             
             .word-group:first-child {
@@ -2068,7 +2068,7 @@ def render_html_content(
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                margin-bottom: 20px;
+                /* margin-bottom: 20px; */
                 padding-bottom: 8px;
                 border-bottom: 1px solid #f0f0f0;
             }
@@ -2100,7 +2100,7 @@ def render_html_content(
             }
             
             .news-item {
-                margin-bottom: 20px;
+                /* margin-bottom: 20px; */
                 padding: 16px 0;
                 border-bottom: 1px solid #f5f5f5;
                 position: relative;
@@ -2324,7 +2324,7 @@ def render_html_content(
             }
             
             .footer {
-                margin-top: 32px;
+                /* margin-top: 32px; */
                 padding: 20px 24px;
                 background: #f8f9fa;
                 border-top: 1px solid #e5e7eb;
@@ -2355,9 +2355,9 @@ def render_html_content(
             }
             
             @media (max-width: 480px) {
-                body { padding: 12px; }
+                body { padding: 0px; }
                 .header { padding: 24px 20px; }
-                .content { padding: 20px; }
+                .content { padding: 8px; }
                 .footer { padding: 16px 20px; }
                 .header-info { grid-template-columns: 1fr; gap: 12px; }
                 .news-header { gap: 6px; }
@@ -2629,8 +2629,8 @@ def render_html_content(
             
             <div class="footer">
                 <div class="footer-content">
-                    由 <span class="project-name">TrendRadar</span> 生成 · 
-                    <a href="https://github.com/sansan0/TrendRadar" target="_blank" class="footer-link">
+                    由 <span class="project-name">Pacific Blue</span> 生成 · 
+                    <a href="https://github.com/yangloft/PacificBlue" target="_blank" class="footer-link">
                         GitHub 开源项目
                     </a>"""
 
