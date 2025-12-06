@@ -58,13 +58,13 @@ Microsoft
 英伟达
 NVIDIA
 黄仁勋
-
 AMD
 
 谷歌
 Google
 Gemini
 Deepmind
+Android
 
 ChatGPT
 OpenAI
@@ -73,10 +73,11 @@ Sora
 Claude
 Anthropic
 
+Apple
 iPhone
 iPad
-Mac
 iOS
+Mac
 
 AI
 !GAI
@@ -91,7 +92,6 @@ AI
 
 美国
 日本
-韩国
 
 芯片
 光刻机
@@ -115,4 +115,3 @@ AI
 小米
 Xiaomi
 HyperOS
-小米汽车
