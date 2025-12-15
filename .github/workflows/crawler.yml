@@ -76,6 +76,33 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           GITHUB_ACTIONS: true
         run: python main.py
+
+      # =========== 核心修改开始 ===========
+      - name: Prepare deployment directory
+        run: |
+          # 1. 创建一个干净的临时目录
+          mkdir -p deploy_dist
+          
+          # 2. 将根目录生成的 index.html 复制进去
+          # 注意：main.py 会同时在根目录和 output 目录生成 index.html，这里用根目录的即可
+          if [ -f index.html ]; then
+            cp index.html deploy_dist/index.html
+            echo "✅ 成功将 index.html 移动到部署目录"
+          else
+            echo "❌ 错误：未找到 index.html，爬虫可能运行失败"
+            exit 1
+          fi
+
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: trendradar  # ⚠️ 记得修改为你的 Cloudflare Pages 项目名
+          directory: deploy_dist   # ⚠️ 这里指定刚才创建的临时目录
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          branch: master
+      # =========== 核心修改结束 ===========
         
       - name: Commit and push if changes
         env:
