@@ -100,7 +100,7 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: trendradar  # ⚠️ 记得修改为你的 Cloudflare Pages 项目名
           directory: deploy_dist   # ⚠️ 这里指定刚才创建的临时目录
-          branch: master
+          branch: main
       # =========== 核心修改结束 ===========
         
       - name: Commit and push if changes
