@@ -5419,7 +5419,7 @@ def cleanup_old_output_dirs(retention_days: int = 7):
     清理 output 目录下过期的日期文件夹
     保留最近 retention_days 天的数据
     """
-    retention_days = CONFIG["PUSH_WINDOW"]["RETENTION_DAYS"]
+    retention_days = CONFIG["PUSH_WINDOW"]["RECORD_RETENTION_DAYS"]
     output_dir = Path("output")
     if not output_dir.exists():
         return
