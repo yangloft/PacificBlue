@@ -18,7 +18,8 @@ from typing import Dict, List, Tuple, Optional, Union
 import pytz
 import requests
 import yaml
-
+import shutil
+from datetime import timedelta
 
 VERSION = "3.5.0"
 
@@ -5410,11 +5411,50 @@ class NewsAnalyzer:
             print(f"分析流程执行出错: {e}")
             raise
 
+# ==========================================
+# 清理output目录过期的文件
+# ==========================================
+def cleanup_old_output_dirs(retention_days: int = 7):
+    """
+    清理 output 目录下过期的日期文件夹
+    保留最近 retention_days 天的数据
+    """
+    retention_days = CONFIG["PUSH_WINDOW"]["RETENTION_DAYS"]
+    output_dir = Path("output")
+    if not output_dir.exists():
+        return
+
+    print(f"正在检查过期数据 (保留最近 {retention_days} 天)...")
+    now = get_beijing_time()
+    cutoff_date = now - timedelta(days=retention_days)
+
+    # 遍历 output 下的所有文件夹
+    for item in output_dir.iterdir():
+        if item.is_dir():
+            dir_name = item.name
+            # 跳过隐藏目录（如 .git, .push_records）
+            if dir_name.startswith("."):
+                continue
+
+            try:
+                # 解析文件夹名为日期： "YYYY年MM月DD日"
+                folder_date = datetime.strptime(dir_name, "%Y年%m月%d日")
+                folder_date = pytz.timezone("Asia/Shanghai").localize(folder_date)
+
+                if folder_date < cutoff_date:
+                    print(f"  🗑️ 删除过期文件夹: {dir_name}")
+                    shutil.rmtree(item)
+            except ValueError:
+                # 如果文件夹名不是日期格式，则跳过
+                continue
+            except Exception as e:
+                print(f"  ⚠️ 删除文件夹 {dir_name} 失败: {e}")
 
 def main():
     try:
         analyzer = NewsAnalyzer()
         analyzer.run()
+        cleanup_old_output_dirs(retention_days=7)
     except FileNotFoundError as e:
         print(f"❌ 配置文件错误: {e}")
         print("\n请确保以下文件存在:")
