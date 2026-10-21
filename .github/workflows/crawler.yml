@@ -121,7 +121,10 @@ jobs:
           
           echo "⬆️ Pushing changes with retry..."
           for i in {1..5}; do
-            git pull --rebase origin $BRANCH_NAME && git push origin $BRANCH_NAME && {
+            git stash || true
+            git pull --rebase origin $BRANCH_NAME
+            git stash pop || true          
+            git push origin $BRANCH_NAME && {
               echo "✅ Successfully pushed on attempt $i"
               exit 0
             }
